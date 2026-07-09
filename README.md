@@ -84,4 +84,5 @@ or a short note describing the affected page.
 
 ## License
 
-See [LICENSE](LICENSE).
+This project is licensed under the [CC License](LICENSE).
+
