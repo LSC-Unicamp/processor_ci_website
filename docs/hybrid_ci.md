@@ -36,6 +36,12 @@ The clearest demonstration of the methodology came from the quad-core Rocket. It
 
 Processor CI already supports the synthesis and RTL simulation of more than 100 RISC-V cores, and the next goal is to bring that scale to OS-level validation. We also plan to pair the expanded matrix with larger FPGA platforms, such as the Xilinx VC709, to reach more complex multicore topologies, and to integrate formal RISC-V architectural compliance suites into the loop.
 
+## Kernel CI Dashboard
+
+Our results do not stay inside the laboratory. We were the first project to report results periodically to the [KernelCI dashboard](https://dashboard.kernelci.org/tree?o=riscv), and we publish a new round of results twice a week, so the boots and test runs on our RISC-V soft-cores appear where the Linux kernel community already looks for RISC-V results. Kernel maintainers can therefore track regressions on these cores through the same web interface they use for every other architecture.
+
+If you would like to see your RISC-V hard or soft core included in our CI framework, get in touch with us through the [LSC page on LinkedIn](https://www.linkedin.com/company/lsc-unicamp/).
+
 ## Paper
 
 The methodology, the infrastructure, and the full evaluation are described in detail in:

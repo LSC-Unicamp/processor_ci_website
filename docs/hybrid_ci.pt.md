@@ -36,6 +36,12 @@ A demonstração mais clara da metodologia veio do Rocket com quatro núcleos. E
 
 O Processor CI já dá suporte à síntese e à simulação RTL de mais de 100 núcleos RISC-V, e o próximo objetivo é levar essa escala para a validação no nível do sistema operacional. Também pretendemos combinar essa matriz ampliada com plataformas FPGA maiores, como a Xilinx VC709, para alcançar topologias multicore mais complexas, e integrar ao laço suítes formais de conformidade arquitetural do RISC-V.
 
+## Painel do Kernel CI
+
+Nossos resultados não ficam restritos ao laboratório. Fomos o primeiro projeto a reportar resultados periodicamente no [painel do KernelCI](https://dashboard.kernelci.org/tree?o=riscv), e publicamos uma nova rodada de resultados duas vezes por semana, de modo que os boots e as execuções de testes sobre nossos soft-cores RISC-V aparecem onde a comunidade do kernel Linux já busca os resultados de RISC-V. Assim, os mantenedores do kernel podem acompanhar regressões nesses núcleos pela mesma interface web que usam para todas as outras arquiteturas.
+
+Se você gostaria de ver seu hard core ou soft core RISC-V incluído em nosso framework de CI, entre em contato conosco pela [página do LSC no LinkedIn](https://www.linkedin.com/company/lsc-unicamp/).
+
 ## Artigo
 
 A metodologia, a infraestrutura e a avaliação completa estão descritas em detalhe em:
