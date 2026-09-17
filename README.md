@@ -62,7 +62,7 @@ Key pages live under `docs/`:
 - `about.md` / `about.pt.md`: suite overview.
 - `hardware_infrastructure.md` / `.pt.md`: hardware and FPGA infrastructure.
 - `software_tests.md` / `.pt.md`: software testing flow.
-- `kernel_ci.md` / `.pt.md`: Kernel CI page.
+- `hybrid_ci.md` / `.pt.md`: Hybrid CI page.
 - `cores.md` / `.pt.md`: supported processor/core information.
 - `contributing.md` / `.pt.md`: contribution guidance.
 

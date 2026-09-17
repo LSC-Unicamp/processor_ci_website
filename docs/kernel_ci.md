@@ -1,3 +1,0 @@
-# Kernel CI
-
-Hello World!

@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 700" width="1160" height="700" font-family="Carlito, 'DejaVu Sans', Helvetica, Arial, sans-serif">
+  <defs>
+    <style>
+      text { fill: #17161a; }
+      .m     { fill: #6f6d66; }
+      .h1    { font-size: 23px; font-weight: bold; letter-spacing: -0.2px; }
+      .sub   { font-size: 14px; }
+      .leg   { font-size: 11px; font-weight: bold; letter-spacing: 1.5px; fill: #b0543a; }
+      .nt    { font-size: 15px; font-weight: bold; }
+      .nd    { font-size: 12.5px; fill: #6f6d66; }
+      .ct    { font-size: 13px; font-weight: bold; }
+      .cd    { font-size: 11.5px; fill: #6f6d66; }
+      .pt    { font-size: 13px; }
+      .pd    { font-size: 11.5px; fill: #6f6d66; }
+      .ann   { font-size: 13px; fill: #4a4842; }
+      .node  { fill: #ffffff; stroke: #d9d5cb; stroke-width: 1.1; }
+      .wire  { fill: none; stroke: #b0543a; stroke-width: 1.9; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1160" height="700" fill="#fcfbf8"/>
+
+  <text class="h1" x="150" y="42">A single CI loop for a RISC-V soft-core and the software that runs on it</text>
+  <text class="m sub" x="150" y="66">ProcessorCI (hardware) and KernelCI (software) bridged by an FPGA-in-the-loop platform built on LiteX.</text>
+
+  <!-- loop -->
+  <path class="wire" d="M 184 210 H 976 A 34 34 0 0 1 1010 244 V 486 A 34 34 0 0 1 976 520 H 184 A 34 34 0 0 1 150 486 V 244 A 34 34 0 0 1 184 210 Z"/>
+
+  <polygon points="431,204 443,210 431,216" fill="#b0543a"/>
+  <polygon points="719,204 731,210 719,216" fill="#b0543a"/>
+  <polygon points="1004,316 1016,316 1010,328" fill="#b0543a"/>
+  <polygon points="1004,382 1016,382 1010,394" fill="#b0543a"/>
+  <polygon points="443,514 443,526 431,520" fill="#b0543a"/>
+  <polygon points="731,514 731,526 719,520" fill="#b0543a"/>
+  <polygon points="144,312 156,312 150,300" fill="#b0543a"/>
+  <polygon points="144,442 156,442 150,430" fill="#b0543a"/>
+
+  <text class="leg" x="450" y="160">PROCESSORCI — HARDWARE FLOW</text>
+  <text class="leg" x="165" y="588">KERNELCI — SOFTWARE FLOW</text>
+  <text class="leg" x="1108" y="264" transform="rotate(90 1108 264)">HW → SW HANDOFF</text>
+  <text class="leg" x="130" y="484" transform="rotate(-90 130 484)">CO-EVOLUTION FEEDBACK</text>
+
+  <!-- inputs -->
+  <rect x="165" y="92" width="270" height="48" rx="24" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1" stroke-dasharray="4 3"/>
+  <text class="pt" x="300" y="112" text-anchor="middle">commit to the core matrix</text>
+  <text class="pd" x="300" y="129" text-anchor="middle">6 cores · Rocket in 1, 2 and 4-core</text>
+  <path class="wire" d="M 300 140 V 165" stroke-width="1.5"/>
+  <polygon points="294,163 306,163 300,173" fill="#b0543a"/>
+
+  <rect x="730" y="600" width="320" height="48" rx="24" fill="#fcfbf8" stroke="#c9c4b8" stroke-width="1" stroke-dasharray="4 3"/>
+  <text class="pt" x="890" y="620" text-anchor="middle">mainline Linux 7.1.0-rc6 + Buildroot rootfs</text>
+  <text class="pd" x="890" y="637" text-anchor="middle">unmodified — no board-specific patches</text>
+  <path class="wire" d="M 890 600 V 583" stroke-width="1.5"/>
+  <polygon points="884,585 896,585 890,575" fill="#b0543a"/>
+
+  <!-- hardware leg -->
+  <rect class="node" x="165" y="171" width="260" height="78" rx="7"/>
+  <text class="nt" x="182" y="197">LiteX SoC generator</text>
+  <text class="nd" x="182" y="217">core, memory, interconnect</text>
+  <text class="nd" x="182" y="236">and peripherals, from one YAML</text>
+
+  <rect class="node" x="450" y="171" width="260" height="78" rx="7"/>
+  <text class="nt" x="467" y="197">Synthesis</text>
+  <text class="nd" x="467" y="217">Vivado 2024 on a dedicated</text>
+  <text class="nd" x="467" y="236">EDA build node, 5–25 min</text>
+
+  <rect class="node" x="740" y="171" width="260" height="78" rx="7"/>
+  <text class="nt" x="757" y="197">Bitstream + metrics</text>
+  <text class="nd" x="757" y="217">LUT, FF, BRAM, DSP, power</text>
+  <text class="nd" x="757" y="236">estimate, maximum frequency</text>
+
+  <!-- handoff -->
+  <rect class="node" x="925" y="266" width="170" height="50" rx="6"/>
+  <text class="ct" x="941" y="287">CSR memory map</text>
+  <text class="cd" x="941" y="304">exported as JSON / CSV</text>
+
+  <rect class="node" x="925" y="332" width="170" height="50" rx="6"/>
+  <text class="ct" x="941" y="353">Device Tree</text>
+  <text class="cd" x="941" y="370">.dts compiled to .dtb</text>
+
+  <rect class="node" x="925" y="398" width="170" height="50" rx="6"/>
+  <text class="ct" x="941" y="419">OpenSBI firmware</text>
+  <text class="cd" x="941" y="436">fw_jump.bin, injected</text>
+
+  <!-- software leg -->
+  <rect x="740" y="468" width="260" height="104" rx="9" fill="#ffffff" stroke="#b0543a" stroke-width="1.9"/>
+  <rect x="760" y="498" width="36" height="36" rx="4" fill="none" stroke="#b0543a" stroke-width="1.2"/>
+  <circle cx="769" cy="507" r="1.9" fill="#b0543a"/><circle cx="778" cy="507" r="1.9" fill="#b0543a"/><circle cx="787" cy="507" r="1.9" fill="#b0543a"/>
+  <circle cx="769" cy="516" r="1.9" fill="#b0543a"/><circle cx="778" cy="516" r="1.9" fill="#b0543a"/><circle cx="787" cy="516" r="1.9" fill="#b0543a"/>
+  <circle cx="769" cy="525" r="1.9" fill="#b0543a"/><circle cx="778" cy="525" r="1.9" fill="#b0543a"/><circle cx="787" cy="525" r="1.9" fill="#b0543a"/>
+  <text class="nt" x="812" y="503">FPGA-in-the-loop runner</text>
+  <text class="nd" x="812" y="525">OpenSBI → Linux → userspace</text>
+  <text class="nd" x="812" y="546" fill="#b0543a">stays online between builds</text>
+
+  <rect class="node" x="450" y="481" width="260" height="78" rx="7"/>
+  <text class="nt" x="467" y="507">KUnit + kselftest</text>
+  <text class="nd" x="467" y="527">117 suites: crypto, filesystems,</text>
+  <text class="nd" x="467" y="546">IRQ, clocks, hotplug, FPU</text>
+
+  <rect class="node" x="165" y="481" width="260" height="78" rx="7"/>
+  <text class="nt" x="182" y="507">KernelCI dashboard</text>
+  <text class="nd" x="182" y="527">serial logs parsed into JSON,</text>
+  <text class="nd" x="182" y="546">published where maintainers look</text>
+
+  <!-- interior notes -->
+  <text class="leg" x="190" y="280">AT THE BOARD</text>
+  <text class="ann" x="190" y="304">Three boards in the farm: Arty A7-100T, Nexys 4 DDR, Kintex-7.</text>
+  <text class="ann" x="190" y="324">JTAG programs the bitstream and FT2232 bridges capture the</text>
+  <text class="ann" x="190" y="344">UART console; TFTP serves firmware and kernel, NFS serves the</text>
+  <text class="ann" x="190" y="364">rootfs — no SD card is ever flashed by hand.</text>
+
+  <text class="leg" x="890" y="392" text-anchor="end">AT THE HANDOFF</text>
+  <text class="ann" x="890" y="416" text-anchor="end">Every build shifts the memory map, so the Device Tree is</text>
+  <text class="ann" x="890" y="436" text-anchor="end">regenerated from the exported CSRs and injected into the boot</text>
+  <text class="ann" x="890" y="456" text-anchor="end">firmware — the kernel never boots against a stale description.</text>
+</svg>
