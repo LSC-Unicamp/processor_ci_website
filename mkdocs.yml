@@ -90,5 +90,6 @@ nav:
   - Cores: cores.md
   - Hardware infrastructure: hardware_infrastructure.md
   - Software Tests: software_tests.md
+  - Kernel CI: kernel_ci.md
   - Contributing: contributing.md
   - About : about.md
