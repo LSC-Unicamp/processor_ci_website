@@ -1,10 +1,15 @@
+"""Plot frequency against LUT usage from the synthesis data of every board."""
+
 import argparse
 import json
 import os
+import sys
 import plotly.express as px
 
 
-class SynthData:
+class SynthData:  # pylint: disable=too-few-public-methods
+    """Synthesis results of a single processor on a single board."""
+
     def __init__(self):
         self.data = None
         self.processor = None
@@ -14,17 +19,18 @@ class SynthData:
         self.used_luts = None
 
     def load_data(self, path):
+        """Load the synthesis results from a JSON file."""
         try:
-            with open(path, 'r') as f:
+            with open(path, 'r', encoding='utf-8') as f:
                 self.data = json.load(f)
             self.processor = self.data['processor']
             self.board = self.data['board']
             self.luts = self.data['luts']
             self.used_luts = self.luts.pop('used')
             self.max_freq = int(self.data['max_freq_mhz'])
-        except Exception as e:
+        except (OSError, ValueError, KeyError) as e:
             print(f'File {path} could not be loaded: {e}')
-            raise e
+            raise
 
 
 if __name__ == '__main__':
@@ -44,11 +50,11 @@ if __name__ == '__main__':
                 synth = SynthData()
                 synth.load_data(os.path.join(json_path, file))
                 data.append(synth)
-            except Exception as e:
-                print(f'Error processing {file}: {e}')
+            except (OSError, ValueError, KeyError) as error:
+                print(f'Error processing {file}: {error}')
     if not data:
         print('No files were processed')
-        exit(1)
+        sys.exit(1)
 
     # if there are multiple processors with the same frequency and lut on the
     # same board, remove all as they are not connected to the shell
@@ -66,13 +72,13 @@ if __name__ == '__main__':
     ]
 
     # make a png for every board
-    for board in set([x.board for x in data]):
+    for board in {x.board for x in data}:
         fig = px.scatter(
             x=[x.max_freq for x in data if x.board == board],
             y=[x.used_luts for x in data if x.board == board],
             text=[x.processor for x in data if x.board == board],
             labels={'x': 'Frequency (MHz)', 'y': 'Used LUTs'},
-            title=f'Frequency vs LUTs',
+            title='Frequency vs LUTs',
             color=[x.processor for x in data if x.board == board],
         )
         fig.update_traces(textposition='top center')
