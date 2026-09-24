@@ -4,7 +4,7 @@ A verificação de hardware avalia o processador isoladamente, enquanto projetos
 
 O Hybrid CI é nossa resposta a essa lacuna. Ele estende o Processor CI para formar um único laço de integração contínua, no qual um soft-core em evolução e uma pilha de software em evolução são exercitados um contra o outro em hardware real a cada commit. Chamamos essa abordagem de *CI híbrido de HW/SW*.
 
-![O laço de CI híbrido de HW/SW](assets/ci_loop.svg)
+![O laço de CI híbrido de HW/SW](assets/hybrid_ci_flow_pt.svg)
 
 ## Dois princípios
 

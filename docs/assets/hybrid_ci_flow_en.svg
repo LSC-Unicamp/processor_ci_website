@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 362" width="1123" height="542" role="img" aria-label="Hybrid HW/SW continuous integration loop: Processor CI builds the SoC, a hardware to software handoff regenerates the boot firmware, and Kernel CI boots Linux and runs the test suites on the board.">
+  <title>Hybrid HW/SW CI loop</title>
+  <defs>
+    <linearGradient id="pinkToPurple" gradientUnits="userSpaceOnUse" x1="531" y1="64" x2="651" y2="64"><stop offset="0" stop-color="#ad5e97"/><stop offset="1" stop-color="#8f78ad"/></linearGradient>
+    <linearGradient id="blueToPink" gradientUnits="userSpaceOnUse" x1="85.5" y1="188" x2="85.5" y2="94"><stop offset="0" stop-color="#6975af"/><stop offset="1" stop-color="#ad5e97"/></linearGradient>
+    <marker id="arrow-pink" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="5.8" markerHeight="5.8" orient="auto-start-reverse"><path d="M 0.6 1 L 9 5 L 0.6 9 z" fill="#ad5e97"/></marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="5.8" markerHeight="5.8" orient="auto-start-reverse"><path d="M 0.6 1 L 9 5 L 0.6 9 z" fill="#6975af"/></marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8.6" refY="5" markerWidth="5.8" markerHeight="5.8" orient="auto-start-reverse"><path d="M 0.6 1 L 9 5 L 0.6 9 z" fill="#8f78ad"/></marker>
+  </defs>
+  <style>
+    text { font-family: Open Sans, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif; fill: #545454; text-anchor: middle; }
+    .t { font-size: 7.6px; font-weight: 700; }
+    .b { font-size: 5.9px; }
+    .lane { font-size: 8px; font-weight: 700; letter-spacing: 0.4px; }
+    .fb { font-size: 6.6px; font-weight: 700; }
+    .flow { fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+  </style>
+  <rect width="750" height="362" fill="#ffffff"/>
+  <rect x="9.7" y="20.8" width="542" height="87.2" rx="7" fill="#ebd9e6" stroke="#ad5e97" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <rect x="9.7" y="173.6" width="542" height="155.8" rx="7" fill="#dbdeec" stroke="#6975af" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <rect x="581.6" y="40.6" width="138.2" height="269.1" rx="7" fill="#e1d9eb" stroke="#8f78ad" stroke-width="1.6" stroke-dasharray="7 5"/>
+  <text x="280.7" y="15.5" class="lane" fill="#ad5e97">PROCESSOR CI</text>
+  <text x="280.7" y="345" class="lane" fill="#6975af">KERNEL CI</text>
+  <text x="736" y="175" class="lane" fill="#8f78ad" transform="rotate(90 736 175)">HW &#8594; SW</text>
+  <rect x="32.5" y="35.1" width="106.1" height="58.5" rx="5.5" fill="#dcbcd3"/>
+  <text x="85.5" y="59.0" class="t">RISC-V Softcore</text>
+  <text x="85.5" y="66.8" class="b">Core RTL + configuration</text>
+  <text x="85.5" y="74.0" class="b">and description YAMLs</text>
+  <rect x="162.2" y="35.1" width="106.1" height="58.5" rx="5.5" fill="#dcbcd3"/>
+  <text x="215.2" y="59.0" class="t">SoC Generation</text>
+  <text x="215.2" y="66.8" class="b">LiteX assembles interconnect,</text>
+  <text x="215.2" y="74.0" class="b">memory and peripherals</text>
+  <rect x="292.7" y="35.1" width="106.1" height="58.5" rx="5.5" fill="#dcbcd3"/>
+  <text x="345.8" y="59.0" class="t">Synthesis</text>
+  <text x="345.8" y="66.8" class="b">Vivado synthesizes the SoC</text>
+  <text x="345.8" y="74.0" class="b">on a dedicated EDA node</text>
+  <rect x="422.9" y="35.1" width="106.1" height="58.5" rx="5.5" fill="#dcbcd3"/>
+  <text x="475.9" y="58.0" class="t">Bitstream +</text>
+  <text x="475.9" y="67.2" class="t">Metrics</text>
+  <text x="475.9" y="75.0" class="b">Output</text>
+  <rect x="32.5" y="187.9" width="106.1" height="58.5" rx="5.5" fill="#b9bfda"/>
+  <text x="85.5" y="203.6" class="t">Dashboard</text>
+  <text x="85.5" y="212.8" class="t">Submission</text>
+  <text x="85.5" y="220.6" class="b">UART logs aggregated and</text>
+  <text x="85.5" y="227.8" class="b">sent to the public KernelCI</text>
+  <text x="85.5" y="235.0" class="b">dashboard</text>
+  <rect x="162.2" y="187.9" width="106.1" height="58.5" rx="5.5" fill="#b9bfda"/>
+  <text x="215.2" y="208.2" class="t">Test Execution</text>
+  <text x="215.2" y="216.0" class="b">KUnit validates the kernel,</text>
+  <text x="215.2" y="223.2" class="b">kselftest validates the</text>
+  <text x="215.2" y="230.4" class="b">userspace interface</text>
+  <rect x="292.7" y="187.9" width="106.1" height="58.5" rx="5.5" fill="#b9bfda"/>
+  <text x="345.8" y="208.2" class="t">Persistent Runner</text>
+  <text x="345.8" y="216.0" class="b">KernelCI monitors the UART;</text>
+  <text x="345.8" y="223.2" class="b">the board stays online</text>
+  <text x="345.8" y="230.4" class="b">between builds</text>
+  <rect x="422.9" y="187.9" width="106.1" height="58.5" rx="5.5" fill="#b9bfda"/>
+  <text x="475.9" y="208.2" class="t">Network Boot</text>
+  <text x="475.9" y="216.0" class="b">LiteX BIOS loads OpenSBI,</text>
+  <text x="475.9" y="223.2" class="b">Linux and rootfs over TFTP/NFS</text>
+  <text x="475.9" y="230.4" class="b">automatically</text>
+  <rect x="594.7" y="62.9" width="112.4" height="59.0" rx="5.5" fill="#c9bdd9"/>
+  <text x="650.9" y="87.1" class="t">CSR Map Extraction</text>
+  <text x="650.9" y="94.9" class="b">LiteX exports the SoC CSRs</text>
+  <text x="650.9" y="102.1" class="b">and peripherals as JSON and CSV</text>
+  <rect x="594.7" y="145.8" width="112.4" height="59.0" rx="5.5" fill="#c9bdd9"/>
+  <text x="650.9" y="165.4" class="t">Device Tree</text>
+  <text x="650.9" y="174.6" class="t">Generation</text>
+  <text x="650.9" y="182.4" class="b">A script converts the map</text>
+  <text x="650.9" y="189.6" class="b">into .dts, compiled to .dtb</text>
+  <rect x="594.7" y="228.4" width="112.4" height="59.0" rx="5.5" fill="#c9bdd9"/>
+  <text x="650.9" y="249.0" class="t">Firmware Build</text>
+  <text x="650.9" y="256.8" class="b">.dtb is injected into OpenSBI,</text>
+  <text x="650.9" y="264.0" class="b">producing updated boot</text>
+  <text x="650.9" y="271.2" class="b">firmware</text>
+  <rect x="227.9" y="262.5" width="106.1" height="53.1" rx="5.5" fill="#b9bfda"/>
+  <text x="280.9" y="290.9" class="t">Kernel</text>
+  <path class="flow" stroke="#ad5e97" marker-end="url(#arrow-pink)" d="M 141.1 64.3 H 160.7"/>
+  <path class="flow" stroke="#ad5e97" marker-end="url(#arrow-pink)" d="M 270.8 64.3 H 291.2"/>
+  <path class="flow" stroke="#ad5e97" marker-end="url(#arrow-pink)" d="M 401.3 64.3 H 421.4"/>
+  <path class="flow" stroke="#6975af" marker-end="url(#arrow-blue)" d="M 159.7 217.2 H 140.1"/>
+  <path class="flow" stroke="#6975af" marker-end="url(#arrow-blue)" d="M 290.2 217.2 H 269.8"/>
+  <path class="flow" stroke="#6975af" marker-end="url(#arrow-blue)" d="M 420.4 217.2 H 400.3"/>
+  <path class="flow" stroke="#8f78ad" marker-end="url(#arrow-purple)" d="M 650.9 124.4 V 144.3"/>
+  <path class="flow" stroke="#8f78ad" marker-end="url(#arrow-purple)" d="M 650.9 207.3 V 226.9"/>
+  <path class="flow" stroke="url(#pinkToPurple)" marker-end="url(#arrow-purple)" d="M 531.5 64.3 H 553 C 570 64.3 568 31 588 31 H 637 C 647 31 650.9 36 650.9 46 V 61.4"/>
+  <path class="flow" stroke="#8f78ad" marker-end="url(#arrow-purple)" d="M 650.9 289.9 V 314 Q 650.9 325 640 325 H 556 Q 545 325 545 314 V 228 Q 545 217.2 534 217.2 H 530.5"/>
+  <path class="flow" stroke="#6975af" marker-end="url(#arrow-blue)" d="M 72 248.9 V 278 Q 72 289 83 289 H 224.4"/>
+  <path class="flow" stroke="#6975af" marker-end="url(#arrow-blue)" d="M 337.5 289 H 465 Q 476 289 476 278 V 247.9"/>
+  <path class="flow" stroke="url(#blueToPink)" marker-end="url(#arrow-pink)" d="M 85.5 185.4 V 95.1"/>
+  <text x="150" y="283" class="fb">FEEDBACK</text>
+  <text x="405" y="283" class="fb">FEEDBACK</text>
+  <text x="72" y="140" class="fb" transform="rotate(-90 72 140)">FEEDBACK</text>
+</svg>

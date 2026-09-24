@@ -4,7 +4,7 @@ Hardware verification checks the processor in isolation, while software CI proje
 
 Hybrid CI is our answer to that gap. It extends the Processor CI into a single continuous integration loop in which an evolving soft-core and an evolving software stack are exercised against one another on real hardware at every commit. We call this approach *hybrid HW/SW CI*.
 
-![The hybrid HW/SW CI loop](assets/ci_loop.svg)
+![The hybrid HW/SW CI loop](assets/hybrid_ci_flow_en.svg)
 
 ## Two principles
 
