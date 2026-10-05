@@ -1,3 +1,6 @@
 site/
 env/
 docs/assets/performance_comparison*
+
+# macOS
+.DS_Store

@@ -16,6 +16,7 @@ tools/                 Table, plotting, and Jenkins update utilities
 scripts/               Compatibility wrappers for older utility paths
 mkdocs.yml             Site configuration
 requirements.txt       Documentation build dependencies
+requirements-tools.txt Extra dependencies for the utilities under tools/
 README.md              Repository landing page
 ```
 
@@ -27,6 +28,14 @@ cd processor-ci-website
 python3 -m venv env
 . env/bin/activate
 pip install -r requirements.txt
+```
+
+`requirements.txt` covers the site build and works on Python 3.10 and newer.
+The plotting utilities under `tools/` need `matplotlib` and `plotly`, which are
+pinned separately and require Python 3.12 or newer:
+
+```bash
+pip install -r requirements-tools.txt
 ```
 
 ## Quick Start
