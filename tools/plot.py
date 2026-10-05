@@ -1,3 +1,5 @@
+"""Plot frequency against LUT4 usage for a set of RISC-V cores."""
+
 import matplotlib.pyplot as plt
 
 # Dados fornecidos
@@ -17,8 +19,8 @@ dados = {
 }
 
 # Preparar dados para o gráfico
-lut4_values = [0.85 * dados[key]["LUT4"] for key in dados]
-frequencia_values = [1.3 * dados[key]["Frequency"] for key in dados]
+lut4_values = [0.85 * valores["LUT4"] for valores in dados.values()]
+frequencia_values = [1.3 * valores["Frequency"] for valores in dados.values()]
 labels = list(dados.keys())
 
 # Criar gráfico de pontos

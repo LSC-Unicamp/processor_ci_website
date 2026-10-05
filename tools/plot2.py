@@ -1,3 +1,5 @@
+"""Compare frequency and LUT4 usage on Lattice ECP45F and Xilinx XC7A100T."""
+
 import matplotlib.pyplot as plt
 
 # Dados fornecidos
@@ -17,13 +19,13 @@ dados = {
 }
 
 # Preparar dados para a tecnologia Lattice ECP45F (original)
-lut4_values_lattice = [dados[key]["LUT4"] for key in dados]
-frequencia_values_lattice = [dados[key]["Frequency"] for key in dados]
+lut4_values_lattice = [valores["LUT4"] for valores in dados.values()]
+frequencia_values_lattice = [valores["Frequency"] for valores in dados.values()]
 labels = list(dados.keys())
 
 # Preparar dados para a tecnologia Xilinx XC7A100T (ajustes de área e frequência)
-lut4_values_xilinx = [0.85 * dados[key]["LUT4"] for key in dados]
-frequencia_values_xilinx = [1.3 * dados[key]["Frequency"] for key in dados]
+lut4_values_xilinx = [0.85 * valores["LUT4"] for valores in dados.values()]
+frequencia_values_xilinx = [1.3 * valores["Frequency"] for valores in dados.values()]
 
 # Criar gráfico de pontos
 plt.figure(figsize=(10, 6))

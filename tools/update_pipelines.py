@@ -1,3 +1,5 @@
+"""Replace the pipeline script of Jenkins job config.xml files."""
+
 import os
 import xml.etree.ElementTree as ET
 import html
@@ -44,15 +46,17 @@ def update_jenkins_pipeline_script(config_path, jenkinsfile_path):
         print(f"Updated pipeline script for {config_path}")
         return True
 
-    except Exception as e:
+    except (OSError, ET.ParseError) as e:
         print(f"Error updating {config_path}: {e}")
         return False
 
 def bulk_update_jenkins_pipelines(processor_folder, jenkinsfiles_folder):
     """
-    Updates all Jenkins config.xml files in processor folders with the corresponding Jenkinsfile.
+    Updates all Jenkins config.xml files in processor folders with the
+    corresponding Jenkinsfile.
 
-    :param processor_folder: Path to the folder containing processor-named subfolders with config.xml files.
+    :param processor_folder: Path to the folder containing processor-named
+        subfolders with config.xml files.
     :param jenkinsfiles_folder: Path to the folder containing Jenkinsfiles named after processors.
     """
     # List all processor folders
@@ -80,7 +84,8 @@ def main():
     Main function that parses command-line arguments and runs the bulk update.
     """
     parser = argparse.ArgumentParser(
-        description='Update Jenkins pipelines by replacing <script> content in config.xml with corresponding Jenkinsfiles.'
+        description='Update Jenkins pipelines by replacing <script> content '
+        'in config.xml with corresponding Jenkinsfiles.'
     )
     parser.add_argument(
         '-c',
